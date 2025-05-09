@@ -10,6 +10,9 @@
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
+# weird replit java pic #
+generated-icon.png
+
 # Package Files #
 *.jar
 *.war
