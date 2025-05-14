@@ -32,4 +32,14 @@ public class Person {
   
   public void useMoney(int m)
     {this.money -= m;} 
+  public void addMoney(int m)
+  {this.money += m;}
+
+  public void changeHappines(int matches) {
+    if(matches == 0) {
+      happiness -= 5;
+    } else if (matches == 3) {
+      happiness += 10;
+    }
+  }
 }
