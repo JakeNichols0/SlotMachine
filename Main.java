@@ -14,17 +14,22 @@ public class Main {
     Person p = new Person(sc.nextLine());
     System.out.println("You have $" + p.getMoney());
     //Ask for bet
-    System.out.print("How much money? $");
+    System.out.print("How you bettin' bbg? $");
     int bet = sc.nextInt();
     sc.nextLine();
     p.useMoney(bet);
-    while(bet > 0) {
+    while(bet > 0 && p.getHappiness() > 0) {
       //Play the game
       slots.pull(bet);
       System.out.println(slots);
       p.addMoney(slots.getWinnings());
+      p.changeHappines(slots.getMatches());
       System.out.println("Your current happiness is " + p.getHappiness());
-      System.out.print("You have $" + p.getMoney() + " How you bettin' bbg? $");
+      System.out.print("You have $" + p.getMoney() + ". Would you like to sell something (y/n)? ");
+      if(sc.nextLine().equals("y")) {
+        p.sell();
+      }
+      System.out.print("You have $" + p.getMoney() + ". How you bettin' bbg? $");
       bet = sc.nextInt();
       sc.nextLine();
       while (bet > p.getMoney()) {
@@ -34,6 +39,7 @@ public class Main {
       }
       p.useMoney(bet);
     }
+    sc.close();
     System.out.println("\033[0;31mGAME OVER!\033[0;37m - you had $" + p.getMoney() + " Your happiness was " + p.getHappiness());
   }
   

@@ -1,5 +1,5 @@
 public class SlotMachine {
-	private String[] options = {" Bell ", " Bar  ", "Cherry", "Apple ", "Lemon ", "  $   "};
+	private String[] options = {"\033[0;36m Bell \033[0m", "\033[0;34m Bar  \033[0m", "\033[0;31mCherry\033[0m", "\033[0;32mApple \033[0m", "\033[0;33mLemon \033[0m", "\033[0;35m  $   \033[0m"};
 	private String[] slots;
 	private int moneyIn;
 	private int winnings;
@@ -14,7 +14,7 @@ public class SlotMachine {
 		return winnings;
 	}
 
-	public int getMaches() {
+	public int getMatches() {
 		return match;
 	}
 
@@ -37,14 +37,20 @@ public class SlotMachine {
 				}
 			}
 		}
-		for(int j=0; j < matches.length; j++) {
+		for(int j=0; j < matches.length - 1; j++) {
 			if(matches[j] > 1) {
 				match = matches[j];
-				winnings += ((0.2 * factorial(matches[j])) - 0.2) * moneyIn;
+				winnings = (int) (((0.2 * factorial(matches[j])) - 0.2) * moneyIn);
 				return;
 			}
 		}
+		if(matches[matches.length - 1] > 1) {
+			match = matches[matches.length - 1];
+			winnings = (int) (((0.2 * factorial(matches[matches.length - 1])) - 0.2) * 2 * moneyIn);
+			return;
+		}
 		match = 0;
+		winnings = 0;
 	}
 
 	private int factorial(int n) {
