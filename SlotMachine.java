@@ -1,5 +1,5 @@
 public class SlotMachine {
-	private String[] options = {"\033[0;36m Bell \033[0m", "\033[0;34m Bar  \033[0m", "\033[0;31mCherry\033[0m", "\033[0;32mApple \033[0m", "\033[0;33mLemon \033[0m", "\033[0;35m  $   \033[0m"};
+	private String[] options = {"\033[1;36m Bell \033[0m", "\033[1;34m Bar  \033[0m", "\033[1;31mCherry\033[0m", "\033[1;32mApple \033[0m", "\033[1;33mLemon \033[0m", "\033[1;35m  $   \033[0m"};
 	private String[] slots;
 	private double winnings;
 	private int match;

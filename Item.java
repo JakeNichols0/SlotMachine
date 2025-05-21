@@ -29,7 +29,7 @@ public class Item {
 
 	public String normalize() {
 		String a = "";
-		if(name.substring(name.length() -1).equals("s")) {
+		if(!name.substring(name.length() -1).equals("s")) {
 			a = "a ";
 		}
 		return a + name.toLowerCase() + " worth $" + value;

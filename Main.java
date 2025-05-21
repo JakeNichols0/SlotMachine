@@ -23,7 +23,7 @@ public class Main {
     //Create the people
     for(int i=0; i<players.length; i++) {
       System.out.print("What's player " + (i + 1) + "'s name? ");
-      players[i] = new Person(sc.nextLine());
+      players[i] = new Person(sc.nextLine(), i+1);
     }
     //Ask for bet
     betting();
@@ -34,7 +34,7 @@ public class Main {
       for(Person p : players) {
         p.addMoney((int) (slots.getWinnings() * p.getBet()));
         p.changeHappines(slots.getMatches());
-        System.out.println(p.getName() + " - You won $" + (int) (slots.getWinnings() * p.getBet()) + ". Your current happiness is " + p.getHappiness() + ". ");
+        System.out.println(p.getName() + ", you won $" + (int) (slots.getWinnings() * p.getBet()) + ". Your current happiness is " + p.getHappiness() + ". ");
         System.out.print("You have $" + p.getMoney() + ". Would you like to sell something (y/n)? ");
         if(sc.nextLine().equals("y")) {
           p.sell();
@@ -43,6 +43,14 @@ public class Main {
       }
       betting();
     }
+    slots.pull();
+    System.out.println(slots);
+    for(Person p : players) {
+      p.addMoney((int) (slots.getWinnings() * p.getBet()));
+      p.changeHappines(slots.getMatches());
+      System.out.println(p.getName() + ", you won $" + (int) (slots.getWinnings() * p.getBet()));
+    }
+    //end the game
     sc.close();
     System.out.println("\033[1;31mGAME OVER!\033[0m");
     for(Person p : players) {
