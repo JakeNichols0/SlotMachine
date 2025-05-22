@@ -18,7 +18,17 @@ public class Main {
       sc.nextLine();
       System.out.print("How many players? ");
     }
-    players = new Person[sc.nextInt()];
+    int pluh = sc.nextInt();
+    while(pluh <= 0) {
+      System.out.print("How many players? ");
+      while (!sc.hasNextInt()) {
+        System.out.println("Invalid input. Put in an integer or I'll kill you.");
+        sc.nextLine();
+        System.out.print("How many players? ");
+      }
+      pluh = sc.nextInt();
+    }
+    players = new Person[pluh];
     sc.nextLine();
     //Create the people
     for(int i=0; i<players.length; i++) {
@@ -75,6 +85,7 @@ public class Main {
       }
       if(p.getBet() <= 0 || p.getHappiness() <= 0) {
         repeat = false;
+        p.setBet(0);
       } else {
         p.useBet();
       }

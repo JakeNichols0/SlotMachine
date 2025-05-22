@@ -56,7 +56,12 @@ public class Person {
       System.out.println(i + 1 + ". " + items.get(i));
     }
     Scanner sc = new Scanner(System.in);
-    System.out.print("Which object would you like to sell? ");
+    System.out.print("Which object would you like to sell? (enter the number) ");
+    while (!sc.hasNextInt()) {
+      System.out.println("Invalid input. Put in an integer or I'll kill you.");
+      sc.nextLine();
+      System.out.print("Which object would you like to sell? ");
+    }
     int n = sc.nextInt();
     if (n > 0 && n <= items.size()) {
       money += items.remove(n - 1).getValue();
